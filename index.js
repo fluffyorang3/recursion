@@ -1,14 +1,20 @@
-const array = []
-
 function fibs(n) {
-    if(n === 0) {
-        return 0
-    } if(n === 1) {
-        return 1
-    } else if(n > 1){
-        result = fibs(n-1) + fibs(n-2)
-        return result
+
+    const array = []
+    
+    function fibMaker(num){
+        if(num < 2) {
+            return num
+        } else if(num > 1){
+            return fibMaker(num-1) + fibMaker(num-2)
+        }
     }
+
+
+    for(let i = 0; i < n; i++){
+        array.push(fibMaker(i))
+    }
+    return array
 }
 
-console.log(fibs(7))
+console.log(fibs(10))
