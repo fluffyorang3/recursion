@@ -12,20 +12,24 @@ console.log(leftSide, rightSide)
 
 let newArray = []
 
-function merge(){
-    while(leftSide.length && rightSide.length) {
-        if(leftSide[0] < rightSide[0]){
-            newArray.push(leftSide[0])
-            leftSide.shift()
+
+
+function merge(left,right){
+    while(left.length && right.length) {
+        if(left[0] < right[0]){
+            newArray.push(left[0])
+            left.shift()
         } else {
-            newArray.push(rightSide[0])
-            rightSide.shift()
+            newArray.push(right[0])
+            right.shift()
         }
+        console.log(`Right ${right}, Left ${left}`)
     }
+    newArray = newArray.concat(left).concat(right);
     console.log(newArray)
 }
 
-merge()
+merge(leftSide, rightSide)
 
 
 
