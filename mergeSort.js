@@ -1,35 +1,33 @@
-let unsortedArray = [3, 2, 1, 13, 8, 5, 0, 1]
+function mergeSort(array) {
+  if (array.length <= 1) {
+    return array;
+  }
 
-let array = [1, 2, 3, 13, 0, 1, 5, 8]
+  let mid = Math.floor(array.length / 2);
+  let left = array.slice(0, mid);
+  let right = array.slice(mid, array.length);
 
-let half_length = Math.ceil(array.length / 2)
+  left = mergeSort(left);
+  right = mergeSort(right);
 
-let leftSide = array.slice(0, half_length)
-
-let rightSide = array.slice(half_length)
-
-console.log(leftSide, rightSide)
-
-let newArray = []
-
-
-
-function merge(left,right){
-    while(left.length && right.length) {
-        if(left[0] < right[0]){
-            newArray.push(left[0])
-            left.shift()
-        } else {
-            newArray.push(right[0])
-            right.shift()
-        }
-        console.log(`Right ${right}, Left ${left}`)
-    }
-    newArray = newArray.concat(left).concat(right);
-    console.log(newArray)
+  return merge(left, right);
 }
 
-merge(leftSide, rightSide)
+function merge(left, right) {
+  let mergedArray = [];
+  let leftIndex = 0;
+  let rightIndex = 0;
 
-
-
+  while (leftIndex < left.length && rightIndex < right.length) {
+    if (left[leftIndex] < right[rightIndex]) {
+      mergedArray.push(left[leftIndex]);
+      leftIndex++;
+    } else {
+      mergedArray.push(right[rightIndex]);
+      rightIndex++;
+    }
+  }
+  return mergedArray
+    .concat(left.slice(leftIndex))
+    .concat(right.slice(rightIndex));
+}
