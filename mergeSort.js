@@ -1,3 +1,5 @@
+array = [4, 634, 7, 12, 351, 6, 73, 4, 73, 634, 7, 8883, 341, 3, 3];
+
 function mergeSort(array) {
   if (array.length <= 1) {
     return array;
@@ -31,3 +33,6 @@ function merge(left, right) {
     .concat(left.slice(leftIndex))
     .concat(right.slice(rightIndex));
 }
+
+const sorted = mergeSort(array);
+console.log(sorted);
